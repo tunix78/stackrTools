@@ -59,6 +59,18 @@ parser.add_argument("-t", "--tfplanlocation", type=str, required=True,
 args = parser.parse_args()
 
 #
+# Print out the different cmd line parameters
+#
+print(f"Module Name: {args.modulename}")
+print(f"Submodule Name: {args.submodulename}")
+print(f"MongoDB Instance: {args.mongodb}")
+print(f"Password: <not revealed>")
+print(f"Basepath: {args.basepath}")
+print(f"Cucumber Location: {args.cucumberlocation}")
+print(f"Decision Log Location: {args.decisionloglocation}")
+print(f"TF Plan Location: {args.tfplanlocation}")
+
+#
 # Connect to MongoDB and set the correct database
 #
 dbclient = pymongo.MongoClient(f"mongodb+srv://svengauggel:{args.password}@{args.mongodb}/?retryWrites=true&w=majority")
