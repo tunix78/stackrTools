@@ -115,11 +115,15 @@ testNo = testResultCollection.insert_one(jsonDataTest)
 #
 # Upload the module HCL plan in json format for stackrModule
 #
-jsonFilePlan = open(f"{args.basepath}/{args.tfplanlocation}")
-jsonStringPlan = jsonFilePlan.read()
-jsonDataPlan = json.loads(jsonStringPlan)
-planCollection = db["modulePlans"]
-planNo = planCollection.insert_one(jsonDataPlan.__dict__)
+#jsonFilePlan = open(f"{args.basepath}/{args.tfplanlocation}")
+#jsonStringPlan = jsonFilePlan.read()
+#jsonDataPlan = json.loads(jsonStringPlan)
+#planCollection = db["modulePlans"]
+#planNo = planCollection.insert_one(jsonDataPlan.__dict__)
+with open(f"{args.basepath}/{args.tfplanlocation}", 'r') as JSON:
+    jsonDataPlan = json.load(JSON)
+    planCollection = db["modulePlans"]
+    planNo = planCollection.insert_one(jsonDataPlan.__dict__)
 
 #
 # Upload the decision logs for stackrModule
