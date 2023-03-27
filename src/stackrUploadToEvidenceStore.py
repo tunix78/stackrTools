@@ -117,9 +117,9 @@ testNo = testResultCollection.insert_one(jsonDataTest)
 #
 jsonFilePlan = open(f"{args.basepath}/{args.tfplanlocation}")
 jsonStringPlan = jsonFilePlan.read()
-jsonDataPlan = json.loads(jsonStringPlan)[0]
+#jsonDataPlan = json.loads(jsonStringPlan)
 planCollection = db["modulePlans"]
-planNo = planCollection.insert_one(jsonDataPlan)
+planNo = planCollection.insert_one(jsonStringPlan)
 
 #
 # Upload the decision logs for stackrModule
