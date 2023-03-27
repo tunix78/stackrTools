@@ -106,7 +106,7 @@ metaNo = metadataResultCollection.insert_one(newMetadataRecord.__dict__)
 #
 # Upload the cucumber.json file for stackrModule
 #
-jsonFileTest = open(f"{args.basepath}{args.cucumberlocation}")
+jsonFileTest = open(f"{args.basepath}/{args.cucumberlocation}")
 jsonStringTest = jsonFileTest.read()
 jsonDataTest = json.loads(jsonStringTest)[0]
 testResultCollection = db["testResults"]
