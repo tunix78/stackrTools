@@ -100,30 +100,35 @@ newMetadataRecord = StackrMetaData(args.modulename, args.submodulename, idStr, n
 #
 # Upload the metadata for stackrModule
 #
-metadataResultCollection = db["metaData"]
-metaNo = metadataResultCollection.insert_one(newMetadataRecord.__dict__)
+#metadataResultCollection = db["metaData"]
+#metaNo = metadataResultCollection.insert_one(newMetadataRecord.__dict__)
 
 #
 # Upload the cucumber.json file for stackrModule
 #
-jsonFileTest = open(f"{args.basepath}/{args.cucumberlocation}")
-jsonStringTest = jsonFileTest.read()
-jsonDataTest = json.loads(jsonStringTest)[0]
-testResultCollection = db["testResults"]
-testNo = testResultCollection.insert_one(jsonDataTest)
+#jsonFileTest = open(f"{args.basepath}/{args.cucumberlocation}")
+#jsonStringTest = jsonFileTest.read()
+#jsonDataTest = json.loads(jsonStringTest)[0]
+#testResultCollection = db["testResults"]
+#testNo = testResultCollection.insert_one(jsonDataTest)
 
 #
 # Upload the module HCL plan in json format for stackrModule
 #
+jsonFilePlan = open(f"{args.basepath}/{args.tfplanlocation}")
+jsonStringPlan = jsonFilePlan.read()
+jsonDataPlan = json.loads(jsonStringPlan)
+
 #jsonFilePlan = open(f"{args.basepath}/{args.tfplanlocation}")
 #jsonStringPlan = jsonFilePlan.read()
 #jsonDataPlan = json.loads(jsonStringPlan)
-#planCollection = db["modulePlans"]
-#planNo = planCollection.insert_one(jsonDataPlan.__dict__)
-with open(f"{args.basepath}/{args.tfplanlocation}", 'r') as JSON:
-    jsonDataPlan = json.load(JSON)
-    planCollection = db["modulePlans"]
-    planNo = planCollection.insert_one(jsonDataPlan.__dict__)
+
+#with open(f"{args.basepath}/{args.tfplanlocation}", 'r') as JSON:
+#    jsonDataPlan = json.load(JSON)
+
+planCollection = db["modulePlans"]
+planNo = planCollection.insert_one(jsonDataPlan)
+
 
 #
 # Upload the decision logs for stackrModule
