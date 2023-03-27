@@ -109,6 +109,7 @@ metaNo = metadataResultCollection.insert_one(newMetadataRecord.__dict__)
 jsonFileTest = open(f"{args.basepath}/{args.cucumberlocation}")
 jsonStringTest = jsonFileTest.read()
 jsonDataTest = json.loads(jsonStringTest)[0]
+jsonDataTest.update({"uuid": idStr, "version": newVersion})
 testResultCollection = db["testResults"]
 testNo = testResultCollection.insert_one(jsonDataTest)
 
@@ -118,6 +119,7 @@ testNo = testResultCollection.insert_one(jsonDataTest)
 jsonFilePlan = open(f"{args.basepath}/{args.tfplanlocation}")
 jsonStringPlan = jsonFilePlan.read()
 jsonDataPlan = json.loads(jsonStringPlan)
+jsonDataPlan.update({"uuid": idStr, "version": newVersion})
 planCollection = db["modulePlans"]
 planNo = planCollection.insert_one(jsonDataPlan)
 
@@ -127,5 +129,6 @@ planNo = planCollection.insert_one(jsonDataPlan)
 #jsonFileDecision = open(f"{args.basepath}{args.decisionloglocation}")
 #jsonStringDecision = jsonFileDecision.read()
 #jsonDataDecision = json.loads(jsonStringDecision)[0]
+#jsonDataDecision.update({"uuid": idStr, "version": newVersion})
 #decisionLogCollection = db["decisionLogs"]
 #decisionNo = decisionLogCollection.insert_one(jsonDataDecision)
