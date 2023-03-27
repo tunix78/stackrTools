@@ -115,7 +115,7 @@ testNo = testResultCollection.insert_one(jsonDataTest)
 #
 # Upload the module HCL plan in json format for stackrModule
 #
-jsonFilePlan = open(f"{args.basepath}{args.tfplanLocation}")
+jsonFilePlan = open(f"{args.basepath}{args.tfplanlocation}")
 jsonStringPlan = jsonFilePlan.read()
 jsonDataPlan = json.loads(jsonStringPlan)[0]
 planCollection = db["modulePlans"]
